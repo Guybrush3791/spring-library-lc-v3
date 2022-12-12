@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body
+	th:object="${borrowing}"
+>
+	<h1>BORROWINGS CREATE</h1>
+	<form
+		method="POST"
+		action="/borrowing/store"
+	>
+		<label>Name:</label>
+		<input type="text" name="name" th:field="*{name}">
+		<br>
+		<select name="book">
+			<option
+				th:each="book : ${books}"
+				th:object="${book}"
+				
+				th:value="*{id}"
+				th:field="${borrowing.book}"
+			>
+				[[*{name}]]
+			</option>
+		</select>
+		<br><br>
+		<input type="submit" value="CREATE NEW BORROWING">
+	</form>
+</body>
+</html>

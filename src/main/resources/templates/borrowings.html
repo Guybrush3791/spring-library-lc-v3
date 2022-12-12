@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>BORROWINGS</h1>
+	<a
+		href="/borrowing/create"
+	>
+		CREATE NEW BORROWING
+	</a>
+	<ul>
+		<li
+			th:each="borrowing : ${borrowings}"
+			th:object="${borrowing}"
+		>
+			[[*{name}]] - [[*{book.name}]]
+		</li>	
+	</ul>
+</body>
+</html>

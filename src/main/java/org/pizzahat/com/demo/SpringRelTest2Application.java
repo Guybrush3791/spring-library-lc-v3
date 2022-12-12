@@ -43,34 +43,34 @@ public class SpringRelTest2Application implements CommandLineRunner {
 		borrowingServ.save(br2);
 		borrowingServ.save(br3);
 		
-		System.out.println("-----------------------------------------------------------");
-		
-		Borrowing delBorrowing = borrowingServ.findById(1);
-		borrowingServ.delete(delBorrowing);
-		
-		List<Borrowing> borrowings = borrowingServ.findAll();
-		for (Borrowing br : borrowings) {
-			
-			System.err.println(br + "\n\t" + br.getBook());
-		}
-		
-		System.out.println("-----------------------------------------------------------");
-		
-//		Book delBook = bookServ.findById(2);
-//		bookServ.delete(delBook);
-		
-		List<Book> books = bookServ.findAllWBorrowing();
-		for (Book b : books) {
-			
-			System.err.println(b);
-			
-			for (Borrowing br : b.getBorrowings()) {
-				
-				System.err.println("\t" + br);
-			}
-		}
-		
-		System.out.println("-----------------------------------------------------------");
+//		System.out.println("-----------------------------------------------------------");
+//		
+//		Borrowing delBorrowing = borrowingServ.findById(1);
+//		borrowingServ.delete(delBorrowing);
+//		
+//		List<Borrowing> borrowings = borrowingServ.findAll();
+//		for (Borrowing br : borrowings) {
+//			
+//			System.err.println(br + "\n\t" + br.getBook());
+//		}
+//		
+//		System.out.println("-----------------------------------------------------------");
+//		
+////		Book delBook = bookServ.findById(2);
+////		bookServ.delete(delBook);
+//		
+//		List<Book> books = bookServ.findAllWBorrowing();
+//		for (Book b : books) {
+//			
+//			System.err.println(b);
+//			
+//			for (Borrowing br : b.getBorrowings()) {
+//				
+//				System.err.println("\t" + br);
+//			}
+//		}
+//		
+//		System.out.println("-----------------------------------------------------------");
 	}
 }
 
