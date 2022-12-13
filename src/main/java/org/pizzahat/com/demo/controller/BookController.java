@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.pizzahat.com.demo.pojo.Book;
 import org.pizzahat.com.demo.pojo.Borrowing;
+import org.pizzahat.com.demo.pojo.Category;
 import org.pizzahat.com.demo.serv.BookServ;
 import org.pizzahat.com.demo.serv.BorrowingServ;
+import org.pizzahat.com.demo.serv.CategoryServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class BookController {
 	@Autowired
 	private BorrowingServ borrowingServ;
 	
+	@Autowired
+	private CategoryServ categoryServ;
+	
 	@GetMapping
 	public String getBooks(Model model) {
 		
@@ -36,11 +41,14 @@ public class BookController {
 	@GetMapping("/create")
 	public String createBook(Model model) {
 		
-		Book book = new Book();
+		Book book = new Book(); 
 		model.addAttribute("book", book);
 		
 		List<Borrowing> borrowings = borrowingServ.findAll();
 		model.addAttribute("borrowings", borrowings);
+
+		List<Category> categories = categoryServ.findAll();
+		model.addAttribute("categories", categories);
 		
 		return "book-create";
 	}
@@ -49,14 +57,14 @@ public class BookController {
 				@Valid Book book
 			) {
 		
-		System.err.println(book);
-		if (book.getBorrowings() != null)
-			for (Borrowing borrowing : book.getBorrowings()) {
-				
-				System.err.println("\t" + borrowing);
-			}
-		else 
-			System.err.println("- no borrowing -");
+//		System.err.println(book);
+//		if (book.getBorrowings() != null)
+//			for (Borrowing borrowing : book.getBorrowings()) {
+//				
+//				System.err.println("\t" + borrowing);
+//			}
+//		else 
+//			System.err.println("- no borrowing -");
 		
 		List<Borrowing> bookBorrowing = book.getBorrowings();
 		for(Borrowing borrowing : bookBorrowing) {

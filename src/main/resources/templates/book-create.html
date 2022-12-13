@@ -15,6 +15,7 @@
 		<label>Name:</label>
 		<input type="text" name="name" th:field="*{name}">
 		<br>
+		<label>Prestiti:</label><br>
 		<div
 			th:each="borrowing : ${borrowings}"
 			th:object="${borrowing}"
@@ -25,6 +26,21 @@
 				
 				th:value="*{id}" 
 				th:field="${book.borrowings}">
+			<label>[[*{name}]]</label>
+		</div>
+		<br>
+		<label>Categories:</label>
+		<div
+			th:each="category : ${categories}"
+			th:object="${category}"
+		>
+			<input
+				type="checkbox"
+				name="categories"
+				
+				th:value="*{id}"
+				th:field="${book.categories}"
+			>
 			<label>[[*{name}]]</label>
 		</div>
 		<br><br>

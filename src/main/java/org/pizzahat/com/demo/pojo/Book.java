@@ -9,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -26,10 +27,19 @@ public class Book {
 	@OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
 	private List<Borrowing> borrowings;
 	
+	@ManyToMany
+	private List<Category> categories;
+	
 	public Book() { }
 	public Book(String name) {
 		
 		setName(name);
+	}
+	public Book(String name, List<Category> categories) {
+		
+		this(name);
+		
+		setCategories(categories);
 	}
 	
 	public int getId() {
@@ -49,6 +59,12 @@ public class Book {
 	}
 	public void setBorrowings(List<Borrowing> borrowings) {
 		this.borrowings = borrowings;
+	}
+	public List<Category> getCategories() {
+		return categories;
+	}
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 	
 	@Override

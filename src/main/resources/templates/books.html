@@ -17,14 +17,34 @@
 			th:object="${book}"
 		>
 			[[*{name}]]
-			<ul>
-				<li
-					th:each="borrowing : *{borrowings}"
-					th:object="${borrowing}"
-				>
-					[[*{name}]]
-				</li>
-			</ul>
+			<div
+				th:if="*{borrowings}"
+			>
+				<br>
+				Prestiti:
+				<ul>
+					<li
+						th:each="borrowing : *{borrowings}"
+						th:object="${borrowing}"
+					>
+						[[*{name}]]
+					</li>
+				</ul>
+			</div>
+			<div
+				th:if="*{categories}"
+			>
+				<br>
+				Categories:
+				<ul>
+					<li
+						th:each="category : *{categories}"
+						th:object="${category}"
+					>
+						[[*{name}]]
+					</li>
+				</ul>
+			</div> 
 		</li>
 	</ul>
 </body>
